@@ -23,12 +23,22 @@ describe('FormField test cases', () => {
     });
   });
 
-  test('onChange check', () => {
-    render(component);
-    fireEvent.change(screen.getAllByRole('textbox')[0], {
-      target: { value: 'value', name: 'name' }
-    });
-    expect(func).toBeCalled();
+  test('change value on input change of Name', () => {
+    const { getByPlaceholderText } = render(component);
+    const searchInput = getByPlaceholderText('enter_name');
+
+    searchInput.onchange = func;
+    fireEvent.change(searchInput, { target: { value: 'name' } });
+    expect(func).toHaveBeenCalled();
+  });
+
+  test('change value on input change of Profile', () => {
+    const { getByPlaceholderText } = render(component);
+    const searchInput = getByPlaceholderText('Profile');
+
+    searchInput.onchange = func;
+    fireEvent.change(searchInput, { target: { value: 'profile' } });
+    expect(func).toHaveBeenCalled();
   });
 
   test('show input field name placeholder', () => {
