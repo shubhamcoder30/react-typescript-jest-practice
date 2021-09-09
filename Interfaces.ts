@@ -7,6 +7,5 @@ export interface arrface {
   holdProfile: string;
 }
 export interface props {
-  arr: arrface[];
-  setArr: React.Dispatch<React.SetStateAction<arrface[]>>;
+  submit: (emp: Iface) => any;
 }
